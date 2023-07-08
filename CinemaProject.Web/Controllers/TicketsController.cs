@@ -21,9 +21,14 @@ namespace CinemaProject.Web.Controllers
         }
 
         // GET: Tickets
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(DateTime filterDate)
         {
-            return View(_ticketService.GetAllTickets());
+            if(filterDate.Year == 0001)
+                return View(_ticketService.GetAllTickets());
+            else
+            {
+                return View(_ticketService.GetAllTicketsByDate(filterDate));
+            }
         }
 
         // GET: Tickets/Details/5
@@ -145,5 +150,12 @@ namespace CinemaProject.Web.Controllers
         {
             return _ticketService.TicketExists(id);
         }
+
+        [HttpPost]
+        public IActionResult FilterByDate(DateTime filterDate)
+        {
+            return RedirectToAction("Index", filterDate.Date);
+        }
+
     }
 }

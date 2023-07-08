@@ -7,6 +7,7 @@ namespace CinemaProject.Service.Interface
     public interface ITicketService
     {
         IEnumerable<Ticket> GetAllTickets();
+        IEnumerable<Ticket> GetAllTicketsByDate(DateTime filterDate);
         Ticket GetTicketById(Guid? id);
         Ticket AddNewTicket(Ticket entity);
         Ticket UpdeteTicket(Ticket entity);

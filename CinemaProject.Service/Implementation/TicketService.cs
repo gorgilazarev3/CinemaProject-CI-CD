@@ -3,6 +3,7 @@ using CinemaProject.Repository.Interface;
 using CinemaProject.Service.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CinemaProject.Service.Implementation
 {
@@ -29,6 +30,11 @@ namespace CinemaProject.Service.Implementation
         public IEnumerable<Ticket> GetAllTickets()
         {
             return _ticketRepository.GetAll();
+        }
+
+        public IEnumerable<Ticket> GetAllTicketsByDate(DateTime filterDate)
+        {
+            return _ticketRepository.GetAll().Where(t => t.ValidForDate.Date.Equals(filterDate.Date));
         }
 
         public Ticket GetTicketById(Guid? id)
