@@ -39,6 +39,26 @@ namespace CinemaProject.Repository.Migrations
                     b.ToTable("Movies");
                 });
 
+            modelBuilder.Entity("CinemaProject.Domain.DomainModels.Ticket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ForMovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("ValidForDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tickets");
+                });
+
             modelBuilder.Entity("CinemaProject.Domain.Identity.CinemaUser", b =>
                 {
                     b.Property<string>("Id")

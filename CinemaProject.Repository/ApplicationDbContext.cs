@@ -13,6 +13,7 @@ namespace CinemaProject.Repository
     {
 
         public virtual DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<Ticket> Tickets { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

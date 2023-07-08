@@ -1,0 +1,86 @@
+﻿@model IEnumerable<CinemaProject.Domain.DomainModels.Ticket>
+@inject CinemaProject.Service.Interface.IMovieService movieService
+
+@{
+    ViewData["Title"] = "Tickets";
+}
+
+<h1>Available Tickets in the Cinema</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create a new ticket</a>
+</p>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@movieService.GetMovieById(item.ForMovieId).ImageURL" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Ticket for movie @movieService.GetMovieById(item.ForMovieId).Name</h5>
+                        <h6 class="card-subtitle">Movie category: @movieService.GetMovieById(item.ForMovieId).Category</h6>
+                        <h6 class="card-text h6">Valid for date: @item.ValidForDate.ToShortDateString()</h6>
+
+                    </div>
+                    <div class="card-link ml-4 mb-1">
+                        <a class="btn btn-outline-success mr-2" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-outline-info mr-2" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-outline-danger mr-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p>Price: @item.Price $</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            @*        <tr>
+        <td>
+        @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+        @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+        <img src="@item.ImageURL" width="125">
+
+        </td>
+        <td>
+        <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+        </tr>*@
+        }
+
+    </div>
+</div>
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@

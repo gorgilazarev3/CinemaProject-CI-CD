@@ -45,6 +45,7 @@ namespace CinemaProject.Web
 
             services.AddTransient<IUserService, Service.Implementation.UserService>();
             services.AddTransient<IMovieService, Service.Implementation.MovieService>();
+            services.AddTransient<ITicketService, Service.Implementation.TicketService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
