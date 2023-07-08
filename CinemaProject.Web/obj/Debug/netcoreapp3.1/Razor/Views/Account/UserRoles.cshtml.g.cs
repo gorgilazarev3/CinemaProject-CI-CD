@@ -20,13 +20,6 @@ using CinemaProject.Web;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "E:\Projects\CinemaProject\CinemaProject.Web\Views\_ViewImports.cshtml"
-using CinemaProject.Web.Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 1 "E:\Projects\CinemaProject\CinemaProject.Web\Views\Account\UserRoles.cshtml"
 using CinemaProject.Domain;
 
@@ -34,7 +27,7 @@ using CinemaProject.Domain;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"43a8ab7a624b4604c51877f64ebd1ab999f38447", @"/Views/Account/UserRoles.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a525aee7ca1195bee2e07e69d91b83229f4fe194", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"85b90398e30e0a238517f929e94cd66f37b0d18c", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Account_UserRoles : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CinemaProject.Domain.DTO.UserRolesDTO>
     #nullable disable
@@ -131,7 +124,7 @@ using CinemaProject.Domain;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                <td>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "43a8ab7a624b4604c51877f64ebd1ab999f384476140", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "43a8ab7a624b4604c51877f64ebd1ab999f384475957", async() => {
                 WriteLiteral("\r\n                        <button class=\"btn btn-success\" type=\"submit\">Change Role</button>\r\n                    ");
             }
             );

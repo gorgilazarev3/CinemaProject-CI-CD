@@ -1,4 +1,5 @@
-﻿using CinemaProject.Domain.Identity;
+﻿using CinemaProject.Domain.DomainModels;
+using CinemaProject.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ namespace CinemaProject.Repository
 {
     public class ApplicationDbContext : IdentityDbContext<CinemaUser>
     {
+
+        public virtual DbSet<Movie> Movies { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

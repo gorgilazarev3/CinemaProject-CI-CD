@@ -1,4 +1,4 @@
-﻿using CinemaProject.Web.Models;
+﻿using CinemaProject.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;

@@ -41,8 +41,10 @@ namespace CinemaProject.Web
             services.AddRazorPages();
 
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository.Implementation.Repository<>));
 
             services.AddTransient<IUserService, Service.Implementation.UserService>();
+            services.AddTransient<IMovieService, Service.Implementation.MovieService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

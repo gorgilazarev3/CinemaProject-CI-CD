@@ -20,13 +20,6 @@ using CinemaProject.Web;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "E:\Projects\CinemaProject\CinemaProject.Web\Views\_ViewImports.cshtml"
-using CinemaProject.Web.Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 1 "E:\Projects\CinemaProject\CinemaProject.Web\Views\Account\UserRolePage.cshtml"
 using CinemaProject.Domain;
 
@@ -34,7 +27,7 @@ using CinemaProject.Domain;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3c9252d2876a4d2e0d3515c0be417c04a9dfe6e9", @"/Views/Account/UserRolePage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a525aee7ca1195bee2e07e69d91b83229f4fe194", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"85b90398e30e0a238517f929e94cd66f37b0d18c", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Account_UserRolePage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CinemaProject.Domain.DTO.ChangeUserRoleDTO>
     #nullable disable
@@ -79,9 +72,9 @@ using CinemaProject.Domain;
 #line hidden
 #nullable disable
             WriteLiteral("</h1>\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c9252d2876a4d2e0d3515c0be417c04a9dfe6e95332", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c9252d2876a4d2e0d3515c0be417c04a9dfe6e95149", async() => {
                 WriteLiteral("\r\n    <label for=\"user-role-select\">Select user role</label>\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c9252d2876a4d2e0d3515c0be417c04a9dfe6e95658", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c9252d2876a4d2e0d3515c0be417c04a9dfe6e95475", async() => {
                     WriteLiteral("\r\n");
 #nullable restore
 #line 9 "E:\Projects\CinemaProject\CinemaProject.Web\Views\Account\UserRolePage.cshtml"
@@ -92,7 +85,7 @@ using CinemaProject.Domain;
 #line hidden
 #nullable disable
                     WriteLiteral("            ");
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c9252d2876a4d2e0d3515c0be417c04a9dfe6e96192", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c9252d2876a4d2e0d3515c0be417c04a9dfe6e96009", async() => {
 #nullable restore
 #line 11 "E:\Projects\CinemaProject\CinemaProject.Web\Views\Account\UserRolePage.cshtml"
                              Write(role);
