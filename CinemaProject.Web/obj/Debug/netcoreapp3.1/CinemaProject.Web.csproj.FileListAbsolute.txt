@@ -364,3 +364,5 @@ E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\CinemaProjec
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\CinemaProject.Web.Views.pdb
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\CinemaProject.Web.csproj.CopyComplete
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\CinemaProject.Web.genruntimeconfig.cache
+E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserRoles.cshtml.g.cs
+E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserRolePage.cshtml.g.cs

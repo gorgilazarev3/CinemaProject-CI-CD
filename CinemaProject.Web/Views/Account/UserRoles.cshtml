@@ -1,5 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using CinemaProject.Domain
+@model CinemaProject.Domain.DTO.UserRolesDTO
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Current Role
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in Model.AllUsers)
+        {
+            <tr>
+                <td>@user.User.FirstName</td>
+                <td>@user.User.LastName</td>
+                <td>@user.User.Email</td>
+                <td>@user.CurrentRole</td>
+                <td>
+                    <form asp-action="UserRolePage" method="post" asp-controller="Account" asp-route-user="@user.User.Email" asp-route-currentRole="@user.CurrentRole">
+                        <button class="btn btn-success" type="submit">Change Role</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

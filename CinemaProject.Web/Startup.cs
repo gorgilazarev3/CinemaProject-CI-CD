@@ -1,6 +1,8 @@
 //using CinemaProject.Web.Data;
 using CinemaProject.Domain.Identity;
 using CinemaProject.Repository;
+using CinemaProject.Repository.Implementation;
+using CinemaProject.Repository.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +38,8 @@ namespace CinemaProject.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +59,12 @@ namespace CinemaProject.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+
+            var scope = app.ApplicationServices.CreateScope();
+            var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+            var userManager = scope.ServiceProvider.GetService<UserManager<CinemaUser>>();
+            SeedRoles(roleManager, userManager);
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -67,6 +77,32 @@ namespace CinemaProject.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+        }
+
+        private async void SeedRoles(RoleManager<IdentityRole> roleManager, UserManager<CinemaUser> userManager)
+        {
+            //var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            //var userManager = serviceProvider.GetRequiredService<UserManager<CinemaUser>>();
+            if (!await roleManager.RoleExistsAsync("STANDARD_USER"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("STANDARD_USER"));
+            }
+            if (!await roleManager.RoleExistsAsync("ADMIN"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("ADMIN"));
+            }
+            var adminUser = await userManager.FindByEmailAsync("admin@admin");
+            if (adminUser == null)
+            {
+                var user = new CinemaUser { FirstName = "Admin", LastName = "Admin", Age = 21, UserName = "admin@admin", Email = "admin@admin" };
+                await userManager.CreateAsync(user, "Test123!");
+                await userManager.AddToRoleAsync(user, "ADMIN");
+            }
+            else
+            {
+                await userManager.AddToRoleAsync(adminUser, "ADMIN");
+                await userManager.RemoveFromRoleAsync(adminUser, "STANDARD_USER");
+            }
         }
     }
 }

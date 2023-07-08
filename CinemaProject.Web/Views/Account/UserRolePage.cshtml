@@ -1,0 +1,15 @@
+﻿@using CinemaProject.Domain
+@model CinemaProject.Domain.DTO.ChangeUserRoleDTO
+
+<h1 class="h1">Change role for user: @Model.UserId</h1>
+
+<form asp-action="ChangeUserRole" asp-controller="Account" asp-route-user="@Model.UserId" asp-route-role="@Model.SelectedRole">
+    <label for="user-role-select">Select user role</label>
+    <select name="role" asp-for="@Model.SelectedRole" class="form-control">
+        @foreach(var role in Model.AllRoles)
+        {
+            <option value="@role">@role</option>
+        }
+    </select>
+        <button class="btn btn-success" type="submit">Change Role</button>
+</form>
