@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\CinemaProject\\CinemaProject\\CinemaProject.Domain\\CinemaProject.Domain.csproj",
+      "projectUniqueName": "E:\\Projects\\CinemaProject\\CinemaProject.Domain\\CinemaProject.Domain.csproj",
       "projectName": "CinemaProject.Domain",
-      "projectPath": "E:\\Projects\\CinemaProject\\CinemaProject\\CinemaProject.Domain\\CinemaProject.Domain.csproj",
+      "projectPath": "E:\\Projects\\CinemaProject\\CinemaProject.Domain\\CinemaProject.Domain.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\CinemaProject\\CinemaProject\\CinemaProject.Domain\\obj\\",
+      "outputPath": "E:\\Projects\\CinemaProject\\CinemaProject.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
