@@ -3100,6 +3100,23 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "CinemaProject.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "CinemaProject.Domain": "1.0.0",
+          "CinemaProject.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CinemaProject.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CinemaProject.Service.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -9227,11 +9244,17 @@
       "type": "project",
       "path": "../CinemaProject.Repository/CinemaProject.Repository.csproj",
       "msbuildProject": "../CinemaProject.Repository/CinemaProject.Repository.csproj"
+    },
+    "CinemaProject.Service/1.0.0": {
+      "type": "project",
+      "path": "../CinemaProject.Service/CinemaProject.Service.csproj",
+      "msbuildProject": "../CinemaProject.Service/CinemaProject.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "CinemaProject.Repository >= 1.0.0",
+      "CinemaProject.Service >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.32",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.32",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.32",
@@ -9270,6 +9293,9 @@
           "projectReferences": {
             "E:\\Projects\\CinemaProject\\CinemaProject.Repository\\CinemaProject.Repository.csproj": {
               "projectPath": "E:\\Projects\\CinemaProject\\CinemaProject.Repository\\CinemaProject.Repository.csproj"
+            },
+            "E:\\Projects\\CinemaProject\\CinemaProject.Service\\CinemaProject.Service.csproj": {
+              "projectPath": "E:\\Projects\\CinemaProject\\CinemaProject.Service\\CinemaProject.Service.csproj"
             }
           }
         }

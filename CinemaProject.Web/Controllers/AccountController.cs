@@ -2,6 +2,7 @@
 using CinemaProject.Domain.Identity;
 using CinemaProject.Domain.ViewModels;
 using CinemaProject.Repository.Interface;
+using CinemaProject.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,21 +15,21 @@ namespace CinemaProject.Web.Controllers
     [Authorize(Roles = "ADMIN")]
     public class AccountController : Controller
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _userService;
         private readonly UserManager<CinemaUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         
 
-        public AccountController(IUserRepository userRepository, UserManager<CinemaUser> userManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(IUserService userService, UserManager<CinemaUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            _userRepository = userRepository;
+            _userService = userService;
             _userManager = userManager;
             _roleManager = roleManager;
         }
 
         public async Task<IActionResult> UserRoles()
         {
-            var allUsers = _userRepository.GetAll();
+            var allUsers = _userService.FindAllUsers();
             var userModels = new List<UserRoleDTO>();
             foreach (var user in allUsers)
             {
@@ -61,8 +62,9 @@ namespace CinemaProject.Web.Controllers
         public async Task<IActionResult>  ChangeUserRole(string user, string role)
         {
             var cinemaUser = await _userManager.FindByEmailAsync(user);
-            await _userManager.RemoveFromRolesAsync(cinemaUser, _roleManager.Roles.Select(r => r.Name));
+            await _userManager.RemoveFromRolesAsync(cinemaUser, await _userManager.GetRolesAsync(cinemaUser));
             await _userManager.AddToRoleAsync(cinemaUser, role);
+
             return RedirectToAction("UserRoles");
         }
 

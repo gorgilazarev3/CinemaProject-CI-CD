@@ -366,3 +366,9 @@ E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\CinemaProjec
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\CinemaProject.Web.genruntimeconfig.cache
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserRoles.cshtml.g.cs
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserRolePage.cshtml.g.cs
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\CinemaProject.Service.deps.json
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\CinemaProject.Service.runtimeconfig.json
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\CinemaProject.Service.runtimeconfig.dev.json
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\CinemaProject.Service.exe
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\CinemaProject.Service.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\CinemaProject.Service.pdb

@@ -32,6 +32,7 @@
       "CinemaProject.Web/1.0.0": {
         "dependencies": {
           "CinemaProject.Repository": "1.0.0",
+          "CinemaProject.Service": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.32",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.32",
           "Microsoft.AspNetCore.Identity.UI": "3.1.32",
@@ -2362,6 +2363,18 @@
         },
         "compile": {
           "CinemaProject.Repository.dll": {}
+        }
+      },
+      "CinemaProject.Service/1.0.0": {
+        "dependencies": {
+          "CinemaProject.Domain": "1.0.0",
+          "CinemaProject.Repository": "1.0.0"
+        },
+        "runtime": {
+          "CinemaProject.Service.dll": {}
+        },
+        "compile": {
+          "CinemaProject.Service.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -5132,6 +5145,11 @@
       "sha512": ""
     },
     "CinemaProject.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CinemaProject.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

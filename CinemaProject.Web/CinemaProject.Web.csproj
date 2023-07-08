@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CinemaProject.Repository\CinemaProject.Repository.csproj" />
+    <ProjectReference Include="..\CinemaProject.Service\CinemaProject.Service.csproj" />
   </ItemGroup>
 
 </Project>

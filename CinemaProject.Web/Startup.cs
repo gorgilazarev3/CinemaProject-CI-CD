@@ -3,6 +3,7 @@ using CinemaProject.Domain.Identity;
 using CinemaProject.Repository;
 using CinemaProject.Repository.Implementation;
 using CinemaProject.Repository.Interface;
+using CinemaProject.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,6 +41,8 @@ namespace CinemaProject.Web
             services.AddRazorPages();
 
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+
+            services.AddTransient<IUserService, Service.Implementation.UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
