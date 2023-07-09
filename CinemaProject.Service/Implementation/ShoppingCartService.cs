@@ -13,16 +13,19 @@ namespace CinemaProject.Service.Implementation
     {
         private readonly IRepository<ShoppingCart> _shoppingCartRepository;
         private readonly IRepository<TicketInShoppingCart> _ticketInShoppingCartRepository;
+        private readonly IRepository<TicketInOrder> _ticketInOrderRepository;
         private readonly IRepository<Ticket> _ticketRepository;
-        //private readonly IOrderRepository _orderRepository;
+        private readonly IOrderRepository _orderRepository;
         private readonly IUserRepository _userRepository;
 
-        public ShoppingCartService(IRepository<ShoppingCart> shoppingCartRepository, IRepository<TicketInShoppingCart> ticketInShoppingCartRepository, IUserRepository userRepository, IRepository<Ticket> ticketRepository)
+        public ShoppingCartService(IRepository<ShoppingCart> shoppingCartRepository, IRepository<TicketInShoppingCart> ticketInShoppingCartRepository, IUserRepository userRepository, IRepository<Ticket> ticketRepository, IOrderRepository orderRepository, IRepository<TicketInOrder> ticketInOrderRepository)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _ticketInShoppingCartRepository = ticketInShoppingCartRepository;
             _userRepository = userRepository;
             _ticketRepository = ticketRepository;
+            _orderRepository = orderRepository;
+            _ticketInOrderRepository = ticketInOrderRepository;
         }
 
         public bool AddTicketToShoppingCart(AddTicketToCartDTO model)
@@ -40,6 +43,9 @@ namespace CinemaProject.Service.Implementation
                 ticketInShoppingCart.ShoppingCart = userCart;
                 ticketInShoppingCart.Quantity = model.Quantity;
                 _ticketInShoppingCartRepository.Insert(ticketInShoppingCart);
+                userCart.TotalPrice = userCart.GetTotalPrice();
+                _userRepository.Update(user);
+                _shoppingCartRepository.Update(userCart);
                 return true;
             }
            
@@ -92,11 +98,42 @@ namespace CinemaProject.Service.Implementation
             {
                 var toDelete = _ticketInShoppingCartRepository.GetAll().SingleOrDefault(p => p.TicketId == ticketId && p.CartId == userCart.Id);
                 userCart.TicketsInShoppingCart.Remove(toDelete);
+                userCart.TotalPrice = userCart.GetTotalPrice();
                 _userRepository.Update(user);
                 _shoppingCartRepository.Update(userCart);
                 return true;
             }
             return false;
+        }
+
+        public Order CreateOrder(string userId)
+        {
+            var user = _userRepository.Get(userId);
+            var userCart = user.ShoppingCart;
+            if (userCart != null)
+            {
+                Order newOrder = new Order();
+                newOrder.UserId = userId;
+                newOrder.TicketHolder = user;
+                _orderRepository.CreateNewOrder(newOrder);
+                List<TicketInOrder> ticketsInOrders = userCart.TicketsInShoppingCart.Select(p => new TicketInOrder
+                {
+                    Ticket = p.Ticket,
+                    TicketId = p.TicketId,
+                    Quantity = p.Quantity,
+                    Order = newOrder,
+                    OrderId = newOrder.Id
+                }).ToList();
+
+                foreach (var item in ticketsInOrders)
+                {
+                    _ticketInOrderRepository.Insert(item);
+                }
+                user.ShoppingCart.TicketsInShoppingCart.Clear();
+                _userRepository.Update(user);
+                return newOrder;
+            }
+            throw new ArgumentNullException("Exception in the shopping cart");
         }
     }
 }

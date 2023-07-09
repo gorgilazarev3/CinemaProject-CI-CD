@@ -1,7 +1,17 @@
-﻿namespace CinemaProject.Domain.Relationships
+﻿using CinemaProject.Domain.DomainModels;
+using System.ComponentModel.DataAnnotations.Schema;
+using System;
+
+namespace CinemaProject.Domain.Relationships
 {
-    public class TicketInOrder
+    public class TicketInOrder : BaseEntity
     {
-        //TO BE IMPLEMENTED
+        public Guid OrderId { get; set; }
+        public Guid TicketId { get; set; }
+        [ForeignKey("TicketId")]
+        public Ticket Ticket { get; set; }
+        [ForeignKey("OrderId")]
+        public Order Order { get; set; }
+        public int Quantity { get; set; }
     }
 }

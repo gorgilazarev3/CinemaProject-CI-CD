@@ -10,8 +10,8 @@
 else
 {
     <div class="container">
-        @*<div class="row">*@
-            @*<a asp-controller="ShoppingCart" asp-action="OrderNow" class="btn btn-success">Order now</a>*@
+        <div class="row">
+            <a asp-controller="ShoppingCart" asp-action="CheckoutOrder" class="btn btn-success">Order now</a>
 
 @*            <form asp-controller="ShoppingCart" asp-action="CheckoutOrder">
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -23,9 +23,9 @@ else
                         data-locale="auto"
                         data-label="Pay $@(Model.TotalPrice)">
                 </script>
-            </form>
+            </form>*@
 
-        </div>*@
+        </div>
 
         <div class="row" style="margin-top:20px;">
             <table class="table">

@@ -39,6 +39,22 @@ namespace CinemaProject.Repository.Migrations
                     b.ToTable("Movies");
                 });
 
+            modelBuilder.Entity("CinemaProject.Domain.DomainModels.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("CinemaProject.Domain.DomainModels.ShoppingCart", b =>
                 {
                     b.Property<Guid>("Id")
@@ -72,6 +88,8 @@ namespace CinemaProject.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ForMovieId");
 
                     b.ToTable("Tickets");
                 });
@@ -153,6 +171,30 @@ namespace CinemaProject.Repository.Migrations
                     b.HasIndex("ShoppingCartId");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("CinemaProject.Domain.Relationships.TicketInOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TicketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("TicketsInOrders");
                 });
 
             modelBuilder.Entity("CinemaProject.Domain.Relationships.TicketInShoppingCart", b =>
@@ -314,11 +356,42 @@ namespace CinemaProject.Repository.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CinemaProject.Domain.DomainModels.Order", b =>
+                {
+                    b.HasOne("CinemaProject.Domain.Identity.CinemaUser", "TicketHolder")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("CinemaProject.Domain.DomainModels.Ticket", b =>
+                {
+                    b.HasOne("CinemaProject.Domain.DomainModels.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("ForMovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CinemaProject.Domain.Identity.CinemaUser", b =>
                 {
                     b.HasOne("CinemaProject.Domain.DomainModels.ShoppingCart", "ShoppingCart")
                         .WithMany()
                         .HasForeignKey("ShoppingCartId");
+                });
+
+            modelBuilder.Entity("CinemaProject.Domain.Relationships.TicketInOrder", b =>
+                {
+                    b.HasOne("CinemaProject.Domain.DomainModels.Order", "Order")
+                        .WithMany("TicketsInOrder")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaProject.Domain.DomainModels.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CinemaProject.Domain.Relationships.TicketInShoppingCart", b =>

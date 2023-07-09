@@ -13,10 +13,12 @@ namespace CinemaProject.Web.Controllers
     public class ShoppingCartController : Controller
     {
         private readonly IShoppingCartService _shoppingCartService;
+        private readonly IOrderService _orderService;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService)
+        public ShoppingCartController(IShoppingCartService shoppingCartService, IOrderService orderService)
         {
             _shoppingCartService = shoppingCartService;
+            _orderService = orderService;
         }
         public IActionResult Index()
         {
@@ -51,6 +53,12 @@ namespace CinemaProject.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult CheckoutOrder()
+        {
+            OrderNow();
+            return RedirectToAction("Index");
+        }
+
         //public IActionResult CheckoutOrder(string stripeEmail, string stripeToken)
         //{
         //    CustomerService customerService = new CustomerService();
@@ -78,12 +86,12 @@ namespace CinemaProject.Web.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        //private bool OrderNow()
-        //{
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var order = _shoppingCartService.CreateOrder(userId);
-        //    return order != null;
+        private bool OrderNow()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var order = _shoppingCartService.CreateOrder(userId);
+            return order != null;
 
-        //}
+        }
     }
 }

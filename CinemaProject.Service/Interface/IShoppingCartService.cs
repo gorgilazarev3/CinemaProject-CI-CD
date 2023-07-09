@@ -10,6 +10,6 @@ namespace CinemaProject.Service.Interface
         public bool AddTicketToShoppingCart(AddTicketToCartDTO model);
         public AddTicketToCartDTO AddTicketToShoppingCartPage(Guid ticketId);
         public ShoppingCart GetShoppingCartForUser(string userId);
-        //public Order CreateOrder(string userId);
+        public Order CreateOrder(string userId);
     }
 }
