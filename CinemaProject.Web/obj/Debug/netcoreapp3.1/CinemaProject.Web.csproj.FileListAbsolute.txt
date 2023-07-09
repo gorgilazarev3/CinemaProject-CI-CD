@@ -418,3 +418,4 @@ E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\Irony.dll
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\SixLabors.Fonts.dll
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\XLParser.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\ExcelDataReader.dll

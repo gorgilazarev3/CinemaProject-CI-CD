@@ -31,7 +31,7 @@
             <div class="row">
 @foreach (var item in Model) {
 
-       <div class="col-4">
+       <div class="col-4 mb-4">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="@item.ImageURL" alt="Card image cap">
                     <div class="card-body">
@@ -39,7 +39,7 @@
                         <h6 class="card-subtitle">@item.Category</h6>
 
                     </div>
-                    <div class="card-link ml-4">
+                    <div class="card-link ml-4 mb-2">
                         <a class="btn btn-outline-success mr-2" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
                         <a class="btn btn-outline-info mr-2" asp-action="Details" asp-route-id="@item.Id">Details</a> 
                         <a class="btn btn-outline-danger mr-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>

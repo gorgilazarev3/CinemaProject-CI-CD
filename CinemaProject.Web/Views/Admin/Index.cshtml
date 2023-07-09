@@ -21,7 +21,18 @@
             </form>
         </div>
         <div style="width: 45%">
-            <button class="btn btn-outline-danger">import users</button>
+            <h3 class="h3">Import Users</h3>
+
+            <hr />
+            <form method="post" asp-controller="Admin" asp-action="ImportUsers" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" name="file" class="form-control" />
+                </div>
+
+                <hr />
+
+                <button type="submit" class="btn btn-outline-info">Import users from Excel file</button>
+            </form>
         </div>
     </div>
 </div>

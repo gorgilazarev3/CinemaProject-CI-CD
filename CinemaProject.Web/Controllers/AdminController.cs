@@ -1,13 +1,17 @@
 ﻿using CinemaProject.Domain.DomainModels;
 using CinemaProject.Domain.DTO;
 using ClosedXML.Excel;
+using ExcelDataReader;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 
 namespace CinemaProject.Web.Controllers
 {
@@ -58,6 +62,61 @@ namespace CinemaProject.Web.Controllers
                     return File(content, contentType, fileName);
                 }
             }
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult ImportUsers(IFormFile file)
+        {
+            string pathToCopyTo = $"{Directory.GetCurrentDirectory()}\\files\\{file.FileName}";
+            using (FileStream stream = System.IO.File.Create(pathToCopyTo))
+            {
+                file.CopyTo(stream);
+                stream.Flush();
+            }
+
+            var users = getUsersFromExcelFile(file.FileName);
+
+            HttpClient client = new HttpClient();
+
+            string URL = "https://localhost:44315/api/Data/ImportUsersFromExcel";
+
+
+
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(users), Encoding.UTF8, "application/json");
+
+
+            HttpResponseMessage response = client.PostAsync(URL, content).Result;
+
+            var result = response.Content.ReadAsAsync<bool>().Result;
+
+            return RedirectToAction("UserRoles","Account");
+        }
+
+        private List<RegistrationUserDTO> getUsersFromExcelFile(string fileName)
+        {
+            string pathToFile = $"{Directory.GetCurrentDirectory()}\\files\\{fileName}";
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            List<RegistrationUserDTO> users = new List<RegistrationUserDTO>();
+
+            using (FileStream stream = System.IO.File.Open(pathToFile, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    while (reader.Read())
+                    {
+                        users.Add(new RegistrationUserDTO
+                        {
+                            Email = reader.GetValue(0).ToString(),
+                            Password = reader.GetValue(1).ToString(),
+                            ConfirmPassword = reader.GetValue(1).ToString(),
+                            Role = reader.GetValue(2).ToString()
+                        });
+                    }
+                }
+            }
+
+            return users;
         }
     }
 }

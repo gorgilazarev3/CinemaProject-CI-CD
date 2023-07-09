@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "mJGJC2tbG8FPLJ4FWEj0YnhU4xinqS1MW8yRyLZts3DN2PuMGo1qYp5oalee4j455jeyInLp3Mb8fH0jYZFwRA==",
+  "dgSpecHash": "0mBiA/ras9iJ+LevEc63HVYZe3nv857KVoP5IS5OapUTgabEgH1igH1pwwL/OMRm4I13ao2y1z2Y1x+MtfQshg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\CinemaProject\\CinemaProject.Web\\CinemaProject.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\closedxml\\0.102.0\\closedxml.0.102.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\gembox.document\\35.0.1423\\gembox.document.35.0.1423.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\harfbuzzsharp\\2.8.2\\harfbuzzsharp.2.8.2.nupkg.sha512",

@@ -5,17 +5,20 @@
     ViewData["Title"] = "Tickets";
 }
 
-<h1>Available Tickets in the Cinema</h1>
-
-<p>
-    <a asp-action="Create" class="btn btn-success">Create a new ticket</a>
-</p>
-
 <div class="container">
-    <div class="row">
-        <div class="float-right">
+    <h1 class="w-100 text-center">Available Tickets in the Cinema</h1>
+    <hr />
+
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create a new ticket</a>
+    </p>
+</div>
+
+<div class="container mb-3">
+    <div class="row justify-content-end">
+        <div>
             <form asp-action="Index" asp-controller="Tickets" method="get">
-                <input name="filterDate" type="date" />
+                <input class="form-control mb-1" name="filterDate" type="date" />
                 <button class="inline btn btn-primary">Filter by date</button>
             </form>
         </div>
@@ -27,13 +30,13 @@
         @foreach (var item in Model)
         {
 
-            <div class="col-4">
+            <div class="col-4 mb-3">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="@movieService.GetMovieById(item.ForMovieId).ImageURL" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Ticket for movie @movieService.GetMovieById(item.ForMovieId).Name</h5>
-                        <h6 class="card-subtitle">Movie category: @movieService.GetMovieById(item.ForMovieId).Category</h6>
-                        <h6 class="card-text h6">Valid for date: @item.ValidForDate.ToShortDateString()</h6>
+                        <h5 class="card-title">Ticket for movie <span class="font-weight-bolder">@movieService.GetMovieById(item.ForMovieId).Name</span></h5>
+                        <h6 class="card-subtitle pt-2">Movie category: <span class="font-weight-bolder">@movieService.GetMovieById(item.ForMovieId).Category</span></h6>
+                        <h6 class="card-text h6">Valid for date: <span class="font-weight-bolder">@item.ValidForDate.ToShortDateString()</span></h6>
 
                     </div>
                     <div class="card-link ml-4 mb-1">
@@ -42,8 +45,8 @@
                         <a class="btn btn-outline-danger mr-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </div>
                     <div class="card-footer text-center mt-2">
-                        <p>Price: @item.Price $</p>
-                        <a class="btn btn-outline-warning mr-2" asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-ticketId="@item.Id">Add to cart</a>
+                        <p class="lead">Price: <span class="font-weight-bold">@item.Price $</span></p>
+                        <a class="btn btn-warning mr-2 text-white font-weight-bold" asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-ticketId="@item.Id">Add to cart</a>
 
                     </div>
                 </div>

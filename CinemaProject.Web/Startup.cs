@@ -97,7 +97,7 @@ namespace CinemaProject.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Tickets}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
@@ -117,7 +117,7 @@ namespace CinemaProject.Web
             var adminUser = await userManager.FindByEmailAsync("admin@admin");
             if (adminUser == null)
             {
-                var user = new CinemaUser { FirstName = "Admin", LastName = "Admin", Age = 21, UserName = "admin@admin", Email = "admin@admin" };
+                var user = new CinemaUser { FirstName = "Admin", LastName = "Admin", Age = 21, UserName = "admin@admin.com", Email = "admin@admin.com" };
                 await userManager.CreateAsync(user, "Test123!");
                 await userManager.AddToRoleAsync(user, "ADMIN");
             }
