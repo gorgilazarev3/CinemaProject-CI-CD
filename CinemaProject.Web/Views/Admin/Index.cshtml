@@ -1,0 +1,27 @@
+﻿@using CinemaProject.Domain.DomainModels;
+<div class="container">
+    <div class="row">
+        <h1 class="text-center w-100">Administrative Panel</h1>
+    </div>
+    <div class="row justify-content-between">
+        <div style="width: 45%">
+
+            <h3 class="h3">Export Tickets</h3>
+
+            <hr />
+
+            <form method="post" asp-controller="Admin" asp-action="ExportTicketsToExcel">
+                <div class="form-group">
+                    <label class="control-label">Select Genre of movie to Export</label>
+                    <select name="genre" asp-items="Html.GetEnumSelectList<MovieCategory>()" class="form-control">
+                        <option selected>ALL TICKETS</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-success">Export Tickets to Excel</button>
+            </form>
+        </div>
+        <div style="width: 45%">
+            <button class="btn btn-outline-danger">import users</button>
+        </div>
+    </div>
+</div>

@@ -408,3 +408,13 @@ E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\osx
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\libSkiaSharp.dll
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libSkiaSharp.dll
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libSkiaSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\ClosedXML.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\ExcelNumberFormat.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\Irony.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\SixLabors.Fonts.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\XLParser.dll
