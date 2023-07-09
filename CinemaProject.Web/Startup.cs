@@ -4,6 +4,8 @@ using CinemaProject.Domain.Identity;
 using CinemaProject.Repository;
 using CinemaProject.Repository.Implementation;
 using CinemaProject.Repository.Interface;
+using CinemaProject.Service.Implementation;
+using CinemaProject.Service;
 using CinemaProject.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,9 +25,12 @@ namespace CinemaProject.Web
 {
     public class Startup
     {
+        private EmailSettings emailSettings;
         public Startup(IConfiguration configuration)
         {
+            emailSettings = new EmailSettings();
             Configuration = configuration;
+            Configuration.GetSection("EmailSettings").Bind(emailSettings);
         }
 
         public IConfiguration Configuration { get; }
@@ -50,6 +55,11 @@ namespace CinemaProject.Web
             services.AddTransient<ITicketService, Service.Implementation.TicketService>();
             services.AddTransient<IShoppingCartService, Service.Implementation.ShoppingCartService>();
             services.AddTransient<IOrderService, Service.Implementation.OrderService>();
+
+            services.AddScoped<EmailSettings>(es => emailSettings);
+            services.AddScoped<IEmailService, EmailService>(email => new EmailService(emailSettings));
+            services.AddScoped<IBackgroundEmailSender, BackgroundEmailSender>();
+            services.AddHostedService<EmailScopedHostedService>();
 
             services.Configure<StripeSettings>(Configuration.GetSection("StripeSettings"));
         }

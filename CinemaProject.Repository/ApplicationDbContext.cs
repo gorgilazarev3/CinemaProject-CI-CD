@@ -20,6 +20,7 @@ namespace CinemaProject.Repository
         public virtual DbSet<TicketInOrder> TicketsInOrders { get; set; }
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<EmailMessage> EmailMessages { get; set; }
         
         
 

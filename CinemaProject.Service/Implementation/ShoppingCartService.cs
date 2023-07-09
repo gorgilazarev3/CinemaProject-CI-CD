@@ -3,9 +3,11 @@ using CinemaProject.Domain.DTO;
 using CinemaProject.Domain.Relationships;
 using CinemaProject.Repository.Interface;
 using CinemaProject.Service.Interface;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace CinemaProject.Service.Implementation
 {
@@ -15,10 +17,12 @@ namespace CinemaProject.Service.Implementation
         private readonly IRepository<TicketInShoppingCart> _ticketInShoppingCartRepository;
         private readonly IRepository<TicketInOrder> _ticketInOrderRepository;
         private readonly IRepository<Ticket> _ticketRepository;
+        private readonly IRepository<EmailMessage> _emailRepository;
         private readonly IOrderRepository _orderRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IMovieService _movieService;
 
-        public ShoppingCartService(IRepository<ShoppingCart> shoppingCartRepository, IRepository<TicketInShoppingCart> ticketInShoppingCartRepository, IUserRepository userRepository, IRepository<Ticket> ticketRepository, IOrderRepository orderRepository, IRepository<TicketInOrder> ticketInOrderRepository)
+        public ShoppingCartService(IRepository<ShoppingCart> shoppingCartRepository, IRepository<TicketInShoppingCart> ticketInShoppingCartRepository, IUserRepository userRepository, IRepository<Ticket> ticketRepository, IOrderRepository orderRepository, IRepository<TicketInOrder> ticketInOrderRepository, IMovieService movieService, IRepository<EmailMessage> emailRepository)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _ticketInShoppingCartRepository = ticketInShoppingCartRepository;
@@ -26,6 +30,8 @@ namespace CinemaProject.Service.Implementation
             _ticketRepository = ticketRepository;
             _orderRepository = orderRepository;
             _ticketInOrderRepository = ticketInOrderRepository;
+            _movieService = movieService;
+            _emailRepository = emailRepository;
         }
 
         public bool AddTicketToShoppingCart(AddTicketToCartDTO model)
@@ -110,6 +116,14 @@ namespace CinemaProject.Service.Implementation
         {
             var user = _userRepository.Get(userId);
             var userCart = user.ShoppingCart;
+            EmailMessage mail = new EmailMessage();
+            mail.MailTo = user.Email;
+            mail.Subject = "CinemaProject Homework 201042 - Successful order";
+            mail.Status = false;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Hello " + user.Email);
+            sb.AppendLine("We would like to inform you about your successful order of movie tickets in the CinemaProject Application");
+            sb.AppendLine("Here is the list of the tickets that you have ordered:");
             if (userCart != null)
             {
                 Order newOrder = new Order();
@@ -127,9 +141,15 @@ namespace CinemaProject.Service.Implementation
 
                 foreach (var item in ticketsInOrders)
                 {
+                    var movie = _movieService.GetMovieById(item.Ticket.ForMovieId);
                     _ticketInOrderRepository.Insert(item);
+                    sb.AppendLine("- Movie: " + movie.Name + " - " + item.Quantity + " x " + item.Ticket.Price + "$");
                 }
+                sb.AppendLine("Total price of your order: " + userCart.GetTotalPrice() + "$");
+                sb.AppendLine("Thank you for your purchase, CinemaProject Homework 201042 - Integrated Systems!");
                 user.ShoppingCart.TicketsInShoppingCart.Clear();
+                mail.Content = sb.ToString();
+                _emailRepository.Insert(mail);
                 _userRepository.Update(user);
                 return newOrder;
             }

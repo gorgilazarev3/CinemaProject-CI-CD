@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CinemaProject.Domain\CinemaProject.Domain.csproj" />
     <ProjectReference Include="..\CinemaProject.Repository\CinemaProject.Repository.csproj" />
   </ItemGroup>

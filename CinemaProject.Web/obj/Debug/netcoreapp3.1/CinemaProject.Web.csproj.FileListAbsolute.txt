@@ -385,3 +385,12 @@ E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\AddToCart.cshtml.g.cs
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\Stripe.net.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\BouncyCastle.Cryptography.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\MailKit.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\MimeKit.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
