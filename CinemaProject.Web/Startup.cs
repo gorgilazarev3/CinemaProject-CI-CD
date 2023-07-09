@@ -1,4 +1,5 @@
 //using CinemaProject.Web.Data;
+using CinemaProject.Domain;
 using CinemaProject.Domain.Identity;
 using CinemaProject.Repository;
 using CinemaProject.Repository.Implementation;
@@ -49,11 +50,14 @@ namespace CinemaProject.Web
             services.AddTransient<ITicketService, Service.Implementation.TicketService>();
             services.AddTransient<IShoppingCartService, Service.Implementation.ShoppingCartService>();
             services.AddTransient<IOrderService, Service.Implementation.OrderService>();
+
+            services.Configure<StripeSettings>(Configuration.GetSection("StripeSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            Stripe.StripeConfiguration.ApiKey = Configuration.GetSection("StripeSettings")["SecretKey"];
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

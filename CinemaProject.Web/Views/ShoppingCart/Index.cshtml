@@ -1,6 +1,7 @@
 ﻿@using CinemaProject.Domain.DomainModels
+@using CinemaProject.Domain;
 @using Microsoft.Extensions.Options
-@*@inject IOptions<StripeSettings> Stripe*@
+@inject IOptions<StripeSettings> Stripe
 @model ShoppingCart
 
 @if (Model.TicketsInShoppingCart.Count == 0)
@@ -11,19 +12,19 @@ else
 {
     <div class="container">
         <div class="row">
-            <a asp-controller="ShoppingCart" asp-action="CheckoutOrder" class="btn btn-success">Order now</a>
+            @*<a asp-controller="ShoppingCart" asp-action="CheckoutOrder" class="btn btn-success">Order now</a>*@
 
-@*            <form asp-controller="ShoppingCart" asp-action="CheckoutOrder">
+            <form asp-controller="ShoppingCart" asp-action="CheckoutOrder">
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="@Stripe.Value.PublishableKey"
-                        data-amount="@(Model.TotalPrice * 100)"
-                        data-name="E-Shop Integrated Systems"
-                        data-description="Payment for order in the E-Shop"
+                        data-amount="@(Model.GetTotalPrice() * 100)"
+                        data-name="Cinema Project - Homework 201042"
+                        data-description="Payment for order of movie tickets in the Cinema"
                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                         data-locale="auto"
-                        data-label="Pay $@(Model.TotalPrice)">
+                        data-label="Pay $@(Model.GetTotalPrice())">
                 </script>
-            </form>*@
+            </form>
 
         </div>
 

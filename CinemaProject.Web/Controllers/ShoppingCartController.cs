@@ -6,6 +6,7 @@ using CinemaProject.Domain.DomainModels;
 using System.Threading.Tasks;
 using CinemaProject.Domain.DTO;
 using Microsoft.AspNetCore.Authorization;
+using Stripe;
 
 namespace CinemaProject.Web.Controllers
 {
@@ -53,38 +54,36 @@ namespace CinemaProject.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult CheckoutOrder()
+
+        public IActionResult CheckoutOrder(string stripeEmail, string stripeToken)
         {
-            OrderNow();
-            return RedirectToAction("Index");
+            CustomerService customerService = new CustomerService();
+            Customer customer = customerService.Create(new CustomerCreateOptions
+            {
+                Email = stripeEmail,
+                Source = stripeToken
+            });
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var order = _shoppingCartService.GetShoppingCartForUser(userId);
+
+            ChargeService chargeService = new ChargeService();
+            Charge charge = chargeService.Create(new ChargeCreateOptions
+            {
+                Customer = customer.Id,
+                Currency = "usd",
+                Amount = Convert.ToInt32(order.TotalPrice) * 100,
+                Description = "Payment for order of movie tickets in the Cinema Integrated Systems Homework App"
+            });
+            var isOrderCreated = false;
+            if (charge.Status == "succeeded")
+            {
+                isOrderCreated = OrderNow();
+            }
+            if (isOrderCreated)
+                return RedirectToAction("Index");
+            else
+                return NotFound();
         }
-
-        //public IActionResult CheckoutOrder(string stripeEmail, string stripeToken)
-        //{
-        //    CustomerService customerService = new CustomerService();
-        //    Customer customer = customerService.Create(new CustomerCreateOptions
-        //    {
-        //        Email = stripeEmail,
-        //        Source = stripeToken
-        //    });
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var order = _shoppingCartService.GetShoppingCartForUser(userId);
-
-        //    ChargeService chargeService = new ChargeService();
-        //    Charge charge = chargeService.Create(new ChargeCreateOptions
-        //    {
-        //        Customer = customer.Id,
-        //        Currency = "usd",
-        //        Amount = Convert.ToInt32(order.TotalPrice) * 100,
-        //        Description = "Payment of order for E-Shop Integrated Systems App"
-        //    });
-
-        //    if (charge.Status == "succeeded")
-        //    {
-        //        var isOrderCreated = OrderNow();
-        //    }
-        //    return RedirectToAction("Index");
-        //}
 
         private bool OrderNow()
         {
