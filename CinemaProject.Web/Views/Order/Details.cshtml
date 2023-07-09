@@ -1,0 +1,45 @@
+﻿@using CinemaProject.Domain.DomainModels;
+@using CinemaProject.Service.Interface;
+@inject IMovieService movieService
+@model Order
+
+<div class="container">
+
+    <p>
+        <a class="btn btn-warning">@Model.TicketHolder.Email - @Model.TicketHolder.FirstName @Model.TicketHolder.LastName</a>
+    </p>
+
+    @for (int i = 0; i < Model.TicketsInOrder.Count(); i++)
+    {
+        var item = Model.TicketsInOrder.ElementAt(i);
+
+        if (i % 3 == 0)
+        {
+            @:<div class="row">
+            }
+
+            <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem; height: 30rem;">
+                    <img class="card-img-top" src="@movieService.GetMovieById(@item.Ticket.ForMovieId).ImageURL" style="height: 50%;" alt="Image for ticket!">
+
+                    <div class="card-body">
+                        <h3 class="card-title">@movieService.GetMovieById(@item.Ticket.ForMovieId).Name</h3>
+                        <p class="card-text">@movieService.GetMovieById(@item.Ticket.ForMovieId).Category</p>
+
+
+                        <h6>Price: $@item.Ticket.Price</h6>
+                        <h6>Quantity: @item.Quantity</h6>
+                        <h6>Total: $@(item.Ticket.Price * item.Quantity)</h6>
+                    </div>
+
+                </div>
+            </div>
+
+
+            if (i % 3 == 2)
+            {
+            @:</div>
+        }
+    }
+
+</div>

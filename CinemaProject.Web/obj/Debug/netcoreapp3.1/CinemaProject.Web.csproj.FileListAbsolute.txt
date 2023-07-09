@@ -394,3 +394,17 @@ E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Secur
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
 E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll
+E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Order\Details.cshtml.g.cs
+E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Order\Index.cshtml.g.cs
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\GemBox.Document.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\HarfBuzzSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\SkiaSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\osx\native\libHarfBuzzSharp.dylib
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libHarfBuzzSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libHarfBuzzSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\osx\native\libSkiaSharp.dylib
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libSkiaSharp.dll
+E:\Projects\CinemaProject\CinemaProject.Web\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libSkiaSharp.dll
