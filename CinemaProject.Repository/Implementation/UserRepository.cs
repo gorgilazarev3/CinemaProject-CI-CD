@@ -32,7 +32,8 @@ namespace CinemaProject.Repository.Implementation
 
         public CinemaUser Get(string id)
         {
-            return entities.Find(id);
+            return entities.Include(u => u.ShoppingCart).ThenInclude(sc => sc.TicketsInShoppingCart).ThenInclude(tsc => tsc.Ticket).ThenInclude(t => t.Movie).SingleOrDefault(u => u.Id == id);
+            //return entities.SingleOrDefault(u => u.Id == id);
         }
 
         public IEnumerable<CinemaUser> GetAll()

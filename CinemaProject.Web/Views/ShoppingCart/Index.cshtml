@@ -1,0 +1,72 @@
+﻿@using CinemaProject.Domain.DomainModels
+@using Microsoft.Extensions.Options
+@*@inject IOptions<StripeSettings> Stripe*@
+@model ShoppingCart
+
+@if (Model.TicketsInShoppingCart.Count == 0)
+{
+    <h1>There are no tickets added into your shopping cart.</h1>
+}
+else
+{
+    <div class="container">
+        @*<div class="row">*@
+            @*<a asp-controller="ShoppingCart" asp-action="OrderNow" class="btn btn-success">Order now</a>*@
+
+@*            <form asp-controller="ShoppingCart" asp-action="CheckoutOrder">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="@Stripe.Value.PublishableKey"
+                        data-amount="@(Model.TotalPrice * 100)"
+                        data-name="E-Shop Integrated Systems"
+                        data-description="Payment for order in the E-Shop"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto"
+                        data-label="Pay $@(Model.TotalPrice)">
+                </script>
+            </form>
+
+        </div>*@
+
+        <div class="row" style="margin-top:20px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ticket for movie</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Valid for date</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.TicketsInShoppingCart.Count; i++)
+                    {
+                        var currentTicket = Model.TicketsInShoppingCart.ToList()[i];
+
+                        <tr>
+                            <td>@(i+1)</td>
+                            <td>@currentTicket.Ticket.Movie.Name</td>
+                            <td>@currentTicket.Quantity</td>
+                            <td>@currentTicket.Ticket.Price $</td>
+                            <td>@currentTicket.Ticket.ValidForDate.ToShortDateString()</td>
+                            <td>
+                                <a asp-controller="ShoppingCart" asp-action="RemoveTicketFromShoppingCart" asp-route-id="@currentTicket.Ticket.Id" class="btn btn-danger">Remove from cart</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col">Total Price:</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">@Model.GetTotalPrice() $</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+}

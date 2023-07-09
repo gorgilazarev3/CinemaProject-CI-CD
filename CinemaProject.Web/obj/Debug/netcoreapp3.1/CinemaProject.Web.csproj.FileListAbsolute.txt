@@ -382,3 +382,5 @@ E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Details.cshtml.g.cs
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Edit.cshtml.g.cs
 E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Index.cshtml.g.cs
+E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\AddToCart.cshtml.g.cs
+E:\Projects\CinemaProject\CinemaProject.Web\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs
